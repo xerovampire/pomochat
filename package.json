@@ -1,0 +1,24 @@
+
+{
+  "name": "pomochat-pro",
+  "version": "1.0.0",
+  "description": "Collaborative Pomodoro Timer",
+  "main": "index.html",
+  "scripts": {
+    "build": "mkdir -p dist && cp index.html dist/ && cp -r components dist/ || true && cp -r services dist/ || true && echo 'Build complete'",
+    "static-build": "mkdir -p dist && cp index.html dist/ && cp *.tsx dist/ 2>/dev/null || true",
+    "cap-copy": "cap copy android",
+    "cap-open": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@supabase/supabase-js": "^2.45.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

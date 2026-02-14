@@ -1,0 +1,10 @@
+
+{
+  "appId": "com.pomochat.pro",
+  "appName": "PomoChat Pro",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}

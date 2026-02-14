@@ -1,0 +1,16 @@
+{
+  "name": "PomoChat Pro",
+  "description": "Collaborative Pomodoro timer with real-time chat and voice notes.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "android": {
+    "packageName": "com.pomochat.pro",
+    "permissions": [
+      "android.permission.INTERNET",
+      "android.permission.RECORD_AUDIO",
+      "android.permission.MODIFY_AUDIO_SETTINGS"
+    ]
+  }
+}
