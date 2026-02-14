@@ -7,7 +7,7 @@ export default defineConfig({
   base: './', // Ensure relative paths for Android WebView
   build: {
     outDir: 'dist',
-    minify: 'terser',
+    minify: 'esbuild', // Use esbuild (default) to fix missing terser dependency
     chunkSizeWarningLimit: 1000,
   },
 });
