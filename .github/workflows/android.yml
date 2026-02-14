@@ -22,24 +22,26 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          # Removed 'cache: npm' as it requires a package-lock.json which is missing
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-package-lock
 
       - name: Build Web Assets
         run: |
           mkdir -p dist
-          cp index.html dist/
-          # In a real CI, you'd run a bundler here. 
-          # For this ESM setup, we copy the entry points.
-          cp *.tsx dist/ 2>/dev/null || true 
-          cp -r components dist/ 2>/dev/null || true
-          cp -r services dist/ 2>/dev/null || true
+          # Copy everything to dist for Capacitor
+          cp -r * dist/ 2>/dev/null || true
+          # Remove the dist/dist folder if it created one recursively
+          rm -rf dist/dist
+          echo "Web assets prepared in dist folder"
 
       - name: Initialize Capacitor Android
         run: |
-          npx cap add android
+          # Check if android folder exists, if not add it
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
           npx cap sync android
 
       - name: Build Android APK
