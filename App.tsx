@@ -43,14 +43,14 @@ const App: React.FC = () => {
 
     const messageSub = client
       .channel(`room_messages_${currentRoom.id}`)
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `room_id=eq.${currentRoom.id}` }, (payload) => {
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `room_id=eq.${currentRoom.id}` }, (payload: any) => {
         setMessages(prev => [...prev, payload.new as Message]);
       })
       .subscribe();
 
     const roomSub = client
       .channel(`room_state_${currentRoom.id}`)
-      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'rooms', filter: `id=eq.${currentRoom.id}` }, (payload) => {
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'rooms', filter: `id=eq.${currentRoom.id}` }, (payload: any) => {
         const update = payload.new as Room;
         setTimerMode(update.timer_mode);
         setTimeLeft(update.time_left);

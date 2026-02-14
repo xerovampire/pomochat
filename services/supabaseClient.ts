@@ -4,9 +4,9 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 let client: SupabaseClient | null = null;
 
 export const getDetectedConfig = () => {
-  const env = (typeof process !== 'undefined' && process.env) ? process.env : {};
+  const env: any = (typeof process !== 'undefined' && process.env) ? process.env : {};
   // @ts-ignore
-  const metaEnv = (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.env : {};
+  const metaEnv: any = (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.env : {};
   const win = (typeof window !== 'undefined') ? (window as any) : {};
   const winEnv = win.process?.env || win._env_ || win.env || {};
 
